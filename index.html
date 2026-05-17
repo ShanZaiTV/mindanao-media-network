@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mindanao Media Network</title>
+<title>Mindanao Media Network CATV</title>
 
 <style>
 
@@ -15,174 +15,168 @@
 }
 
 body{
-    font-family:Arial, sans-serif;
-    background:#0f172a;
+    background:#0d0d0d;
     color:white;
+    font-family:Arial, sans-serif;
+    display:flex;
+    height:100vh;
     overflow:hidden;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:380px;
+    background:#181818;
+    border-right:2px solid #333;
+    overflow-y:auto;
 }
 
 /* HEADER */
 
-header{
-    height:75px;
-    background:#111827;
-    display:flex;
-    align-items:center;
-    padding:0 20px;
-    border-bottom:3px solid #38bdf8;
+.header{
+    background:#d60000;
+    padding:20px;
+    text-align:center;
 }
 
-.main-logo{
-    width:55px;
-    height:55px;
+.header img{
+    width:90px;
+    height:90px;
     border-radius:50%;
     object-fit:cover;
-    margin-right:15px;
     background:white;
+    margin-bottom:10px;
 }
 
-.title-box{
-    display:flex;
-    flex-direction:column;
+.header h1{
+    font-size:24px;
 }
 
-.title{
-    font-size:28px;
-    font-weight:bold;
-    color:#38bdf8;
-}
-
-.subtitle{
+.header p{
+    margin-top:5px;
     font-size:13px;
-    color:#cbd5e1;
 }
 
-/* MAIN LAYOUT */
+/* FOLDER */
 
-.container{
-    display:flex;
-    height:calc(100vh - 75px);
+.folder{
+    margin:10px;
 }
 
-/* PLAYLIST */
-
-.playlist{
-    width:360px;
-    background:#111827;
-    overflow-y:auto;
-    border-right:2px solid #1e293b;
-}
-
-.playlist-header{
+.folder-title{
+    background:#252525;
     padding:15px;
-    text-align:center;
-    background:#1e293b;
-    font-size:22px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
     font-weight:bold;
-    color:#facc15;
 }
 
-/* CHANNEL ITEM */
+.folder-title:hover{
+    background:#333;
+}
+
+.channels{
+    display:none;
+    margin-top:10px;
+}
+
+/* CHANNEL */
 
 .channel{
     display:flex;
     align-items:center;
-    gap:12px;
-    padding:15px;
-    border-bottom:1px solid #1e293b;
+    gap:10px;
+    background:#1f1f1f;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:8px;
     cursor:pointer;
     transition:0.3s;
 }
 
 .channel:hover{
-    background:#2563eb;
+    background:#d60000;
 }
-
-/* CHANNEL NUMBER */
 
 .channel-number{
     width:45px;
     height:45px;
+    background:#d60000;
     border-radius:50%;
-    background:#38bdf8;
-    color:#000;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:18px;
+    font-size:14px;
     font-weight:bold;
 }
 
-/* CHANNEL LOGO */
-
-.channel-logo{
-    width:60px;
-    height:60px;
-    border-radius:10px;
+.channel img{
+    width:55px;
+    height:55px;
+    border-radius:8px;
     object-fit:cover;
-    background:white;
+    background:black;
 }
-
-/* CHANNEL INFO */
 
 .channel-info{
     flex:1;
 }
 
 .channel-name{
-    font-size:18px;
+    font-size:16px;
     font-weight:bold;
 }
 
-.channel-label{
-    margin-top:5px;
-    font-size:13px;
-    color:#cbd5e1;
+.channel-type{
+    font-size:12px;
+    color:#bbbbbb;
 }
 
 /* PLAYER */
 
-.player{
+.main{
     flex:1;
-    background:black;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
+    padding:20px;
+    overflow:auto;
 }
 
-video{
-    width:96%;
-    height:92%;
+.player-box{
+    background:#181818;
+    padding:15px;
     border-radius:12px;
+}
+
+#nowPlaying{
+    margin-bottom:15px;
+    color:#ffcc00;
+}
+
+#videoPlayer{
+    width:100%;
+    height:600px;
     background:black;
+    border-radius:10px;
 }
 
-/* LIVE LABEL */
-
-.live{
-    position:absolute;
-    top:20px;
-    left:20px;
-    background:red;
-    padding:8px 16px;
-    border-radius:20px;
-    font-size:14px;
-    font-weight:bold;
-    z-index:10;
+#audioPlayer{
+    width:100%;
+    margin-top:20px;
 }
 
-/* FOOTER */
+#youtubePlayer{
+    width:100%;
+    height:600px;
+    border:none;
+    border-radius:10px;
+    display:none;
+}
 
-.footer{
-    position:absolute;
-    bottom:15px;
-    right:20px;
-    background:rgba(0,0,0,0.6);
-    padding:8px 14px;
-    border-radius:20px;
-    font-size:13px;
-    color:#fff;
+footer{
+    text-align:center;
+    margin-top:20px;
+    color:#999;
 }
 
 </style>
@@ -190,319 +184,575 @@ video{
 
 <body>
 
-<!-- HEADER -->
+<!-- SIDEBAR -->
+<div class="sidebar">
 
-<header>
+    <!-- HEADER -->
+    <div class="header">
 
-<img
-src="https://commons.wikimedia.org/wiki/File:Mindanao_Media_Network.jpg"
-class="main-logo"
-alt="Mindanao Media Network Logo">
+        <!-- TITLE LOGO -->
+        <img src="https://i.imgur.com/8Km9tLL.png">
 
-<div class="title-box">
-<div class="title">Mindanao Media Network</div>
-<div class="subtitle">Your Trusted CATV Entertainment & News Source</div>
-</div>
+        <h1>Mindanao Media Network CATV</h1>
 
-</header>
-
-<!-- MAIN -->
-
-<div class="container">
-
-<!-- PLAYLIST -->
-
-<div class="playlist">
-
-<div class="playlist-header">
-CATV Channels
-</div>
-
-<!-- CHANNEL 1 -->
-
-<div class="channel"
-onclick="playChannel(
-'https://cdn.vegasplus.us/vegas/mmn01/playlist.m3u8',
-'Mindanow'
-)">
-
-<div class="channel-number">1</div>
-
-<img
-src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-class="channel-logo">
-
-<div class="channel-info">
-<div class="channel-name">Mindanow</div>
-</div>
-
-</div>
-
-<!-- CHANNEL 2 -->
-
-<div class="channel"
-onclick="playChannel(
-'https://startelevisionph.itunerworldwide.workers.dev/master.live.m3u8',
-'StarTelevision'
-)">
-
-<div class="channel-number">2</div>
-
-<img
-src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-class="channel-logo">
-
-<div class="channel-info">
-<div class="channel-name">StarTelevision</div>
-</div>
-
-</div>
-
-<!-- CHANNEL 3 -->
-
-<div class="channel"
-onclick="playChannel(
-'https://sineplusph.itunerworldwide.workers.dev/master.live.m3u8',
-'SinePlus'
-)">
-
-<div class="channel-number">3</div>
-
-<img
-src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-class="channel-logo">
-
-<div class="channel-info">
-<div class="channel-name">SinePlus</div>
-</div>
-
-</div>
-
-<!-- CHANNEL 4 -->
-
-<div class="channel"
-onclick="playChannel(
-'https://dreamtvph.itunerworldwide.workers.dev/master.live.m3u8',
-'DreamTv'
-)">
-
-<div class="channel-number">4</div>
-
-<img
-src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-class="channel-logo">
-
-<div class="channel-info">
-<div class="channel-name">DreamTv</div>
-</div>
-
-</div>
-
-<!-- CHANNEL 5 -->
-
-<div class="channel"
-onclick="playChannel(
-'https://highlightstvph.itunerworldwide.workers.dev/master.live.m3u8',
-'HighlightsPh'
-)">
-
-<div class="channel-number">5</div>
-
-<img
-src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-class="channel-logo">
-
-<div class="channel-info">
-<div class="channel-name">HighlightsPh</div>
-</div>
-
-</div>
-
-<!-- CHANNEL 6 -->
-
-<div class="channel"
-onclick="playChannel(
-'https://startvphilippines.itunerworldwide.workers.dev/master.live.m3u8',
-'StarTvPh'
-)">
-
-<div class="channel-number">6</div>
-
-<img
-src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-class="channel-logo">
-
-<div class="channel-info">
-<div class="channel-name">StarTvPh</div>
-</div>
-
-</div>
-
-<!-- CHANNEL 7 -->
-
-<div class="channel"
-onclick="playChannel(
-'https://hypetvphbydtmmbs.itunerworldwide.workers.dev/master.live.m3u8',
-'HypeTv'
-)">
-
-<div class="channel-number">7</div>
-
-<img
-src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-class="channel-logo">
-
-<div class="channel-info">
-<div class="channel-name">HypeTv</div>
- </div>
-
-</div>
-    
-<!-- CHANNEL 8 -->
-
-<div class="channel"
-onclick="playChannel(
-'https://3rstv.elektriko4444.workers.dev/peanut.m3u8',
-'3rsTV'
-)">
-
-<div class="channel-number">8</div>
-
-<img
-src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-class="channel-logo">
-
-<div class="channel-info">
-<div class="channel-name">3rsTV</div>
-</div>
-
-</div>
-
-<!-- CHANNEL 9 -->
-
-<div class="channel"
-onclick="playChannel(
-'https://3rssinepinoy2.elektriko4444.workers.dev/mochi.m3u8',
-'3rsSinePinoy'
-)">
-
-<div class="channel-number">9</div>
-
-<img
-src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-class="channel-logo">
-
-<div class="channel-info">
-<div class="channel-name">3rsSinePinoy</div>
-</div>
-
-</div>
-
-<!-- CHANNEL 10 -->
-
-<div class="channel"
-onclick="playChannel(
-'https://3rsmoviebox.elektriko4444.workers.dev/moon.m3u8',
-'3rsMovieBox'
-)">
-
-<div class="channel-number">10</div>
-
-<img
-src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-class="channel-logo">
-
-<div class="channel-info">
-<div class="channel-name">3rsMovieBox</div>
-</div>
-
-</div>
-
-<!-- CHANNEL 11 -->
-
-<div class="channel"
-onclick="playChannel(
-'https://3rscartoonmovies.elektriko4444.workers.dev/kolet.m3u8',
-'3rsCartoonMovies'
-)">
-
-<div class="channel-number">11</div>
-
-<img
-src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-class="channel-logo">
-
-<div class="channel-info">
-<div class="channel-name">3rsCartoonMovies</div>
-</div>
+        <p>CATV • YouTube • Radio Streaming</p>
 
     </div>
 
-  </div>
+    <!-- LIVE TV -->
+    <div class="folder">
 
-<!-- VIDEO PLAYER -->
+        <div class="folder-title"
+             onclick="toggleFolder('tvFolder')">
 
-<div class="player">
+            📺 Live TV Channels
+        </div>
 
-<div class="live" id="liveText">
-LIVE • © 2026 Mindanao Media Network CATV
+        <div class="channels" id="tvFolder">
+
+
+               <!-- YOUTUBE 000 -->
+            <div class="channel"
+                 onclick="playYouTube(
+                 'https://www.youtube.com/embed/s_u5iwg2rts?si=ZgbIGWR07yVAkhC_',
+                 'SUB-SAHARAN MINDANAO')">
+
+                <div class="channel-number">000</div>
+
+                <img src="https://i.imgur.com/Qr71crq.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        MINDANAO MEDIA NETWORK
+                    </div>
+
+                    <div class="channel-type">
+                        YouTube Embed Stream
+                    </div>
+
+                </div>
+
+            </div>
+      
+            <!-- CHANNEL 001 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                'https://startvphilippines.itunerworldwide.workers.dev/master.live.m3u8',
+                 'STAR TV')">
+
+                <div class="channel-number">001</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        STAR TV
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHANNEL 002 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                'https://sineplusph.itunerworldwide.workers.dev/master.live.m3u8',
+                 'SINE PLUS TV')">
+
+                <div class="channel-number">002</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        SINE PLUS TV
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHANNEL 003 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                'https://dreamtvph.itunerworldwide.workers.dev/master.live.m3u8',
+                 'DREAM TV')">
+
+                <div class="channel-number">003</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        DREAM TV
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHANNEL 004 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                'https://highlightstvph.itunerworldwide.workers.dev/master.live.m3u8',
+                 'HIGHLIGHTS TV')">
+
+                <div class="channel-number">004</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        HIGHLIGHTS TV
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHANNEL 005 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                'https://hypetvphbydtmmbs.itunerworldwide.workers.dev/master.live.m3u8',
+                 'HYPE TV')">
+
+                <div class="channel-number">005</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        HYPE TV
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHANNEL 006 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                'https://3rstv.elektriko4444.workers.dev/peanut.m3u8',
+                 '3RS TV')">
+
+                <div class="channel-number">006</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        3RS TV
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHANNEL 007 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                'https://3rssinepinoy2.elektriko4444.workers.dev/mochi.m3u8',
+                 '3RS SINE PINOY')">
+
+                <div class="channel-number">007</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        3RS SINE PINOY
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHANNEL 008 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                'https://3rsmoviebox.elektriko4444.workers.dev/moon.m3u8',
+                 '3RS MOVIE BOX')">
+
+                <div class="channel-number">008</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        3RS MOVIE BOX
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHANNEL 009 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                'https://3rscartoonmovies.elektriko4444.workers.dev/kolet.m3u8',
+                 '3RS CARTOON MOVIES')">
+
+                <div class="channel-number">009</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        3RS CARTOON MOVIES
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHANNEL 010 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                'https://philippinestelevisionnetwork.itunerworldwide.workers.dev/master.live.m3u8',
+                 'PHILIPPINES TELEVISION NETWORK')">
+
+                <div class="channel-number">010</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        PHILIPPINES TELEVISION NETWORK
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHANNEL 011 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                'https://sdtvnetworkph.itunerworldwide.workers.dev/master.live.m3u8',
+                 'SD TV')">
+
+                <div class="channel-number">011</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        SD TV
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHANNEL 012 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                'https://startelevisionph.itunerworldwide.workers.dev/master.live.m3u8',
+                 'STAR TELEVISION')">
+
+                <div class="channel-number">012</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        STAR TELEVISION
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+          
+            <!-- CHANNEL 013 -->
+            <div class="channel"
+                 onclick="playM3U8(
+                   
+  'https://streams.comclark.com/pknsd/ptv/playlist.m3u8',
+                 'PTV PH')">
+
+                <div class="channel-number">013</div>
+
+                <img src="https://i.imgur.com/8Km9tLL.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        PTV PH
+                    </div>
+
+                    <div class="channel-type">
+                        M3U8 Live Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RADIO -->
+    <div class="folder">
+
+        <div class="folder-title"
+             onclick="toggleFolder('radioFolder')">
+
+            🎵 Radio Stations
+        </div>
+
+        <div class="channels" id="radioFolder">
+
+            <!-- RADIO 101 -->
+            <div class="channel"
+                 onclick="playMP3(
+                 'https://stream.zeno.fm/2uhuu5hvzqzuv',
+                 'BUDOTS')">
+
+                <div class="channel-number">101</div>
+
+                <img src="https://i.imgur.com/VaX0pfB.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        BUDOTS
+                    </div>
+
+                    <div class="channel-type">
+                        MP3 Audio Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RADIO 102 -->
+            <div class="channel"
+                 onclick="playMP3(
+                 'https://usa2.server2028.com/listen/sdtv_radio/radio.mp3',
+                 'DREAMSTAR TELERADIO')">
+
+                <div class="channel-number">102</div>
+
+                <img src="https://cdn.onlineradiobox.com/img/l/2/120272.v38.png">
+
+                <div class="channel-info">
+
+                    <div class="channel-name">
+                        DREAMSTAR TELERADIO
+                    </div>
+
+                    <div class="channel-type">
+                        MP3 Audio Stream
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
-<video id="video" controls autoplay></video>
+<!-- MAIN PLAYER -->
+<div class="main">
 
-<div class="footer">
-Mindanao Media Network CATV
-  </div>
+    <div class="player-box">
+
+        <h2 id="nowPlaying">
+            Now Playing: None
+        </h2>
+
+        <!-- VIDEO PLAYER -->
+        <video id="videoPlayer"
+               controls
+               autoplay>
+        </video>
+
+        <!-- YOUTUBE PLAYER -->
+        <iframe id="youtubePlayer"
+                allowfullscreen>
+        </iframe>
+
+        <!-- AUDIO PLAYER -->
+        <audio id="audioPlayer"
+               controls
+               style="display:none;">
+        </audio>
+
+    </div>
+
+    <footer>
+        © 2026 Mindanao Media Network CATV
+    </footer>
+
 </div>
 
-<!-- HLS JS -->
-
+<!-- LIBRARIES -->
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
 
 <script>
 
-const video = document.getElementById('video');
-const liveText = document.getElementById('liveText');
+/* ELEMENTS */
 
-function playChannel(url, name){
+const video = document.getElementById("videoPlayer");
+const audio = document.getElementById("audioPlayer");
+const youtube = document.getElementById("youtubePlayer");
+const nowPlaying = document.getElementById("nowPlaying");
 
-    liveText.innerHTML = "LIVE • " + name;
+/* TOGGLE FOLDER */
+
+function toggleFolder(id){
+
+    const folder = document.getElementById(id);
+
+    if(folder.style.display === "block"){
+        folder.style.display = "none";
+    }else{
+        folder.style.display = "block";
+    }
+}
+
+/* RESET PLAYERS */
+
+function resetPlayers(){
+
+    video.style.display = "none";
+    audio.style.display = "none";
+    youtube.style.display = "none";
+
+    youtube.src = "";
+}
+
+/* PLAY M3U8 */
+
+function playM3U8(url, title){
+
+    resetPlayers();
+
+    nowPlaying.innerHTML = "Now Playing: " + title;
+
+    video.style.display = "block";
 
     if(Hls.isSupported()){
 
-        if(window.hls){
-            window.hls.destroy();
-        }
-
         const hls = new Hls();
-        window.hls = hls;
 
         hls.loadSource(url);
         hls.attachMedia(video);
 
-        hls.on(Hls.Events.MANIFEST_PARSED, function(){
-            video.play();
-        });
-
-    }else if(video.canPlayType('application/vnd.apple.mpegurl')){
+    }else{
 
         video.src = url;
-
-        video.addEventListener('loadedmetadata', function(){
-            video.play();
-        });
-
-    }else{
-        alert("HLS is not supported on this browser.");
     }
 }
 
-/* AUTO PLAY FIRST CHANNEL */
+/* PLAY MPD */
 
-playChannel(
-'https://cdn.vegasplus.us/vegas/mmn01/playlist.m3u8',
-'Mindanow'
-);
+function playMPD(url, title){
+
+    resetPlayers();
+
+    nowPlaying.innerHTML = "Now Playing: " + title;
+
+    video.style.display = "block";
+
+    const player = dashjs.MediaPlayer().create();
+
+    player.initialize(video, url, true);
+}
+
+/* PLAY YOUTUBE */
+
+function playYouTube(url, title){
+
+    resetPlayers();
+
+    nowPlaying.innerHTML = "Now Playing: " + title;
+
+    youtube.style.display = "block";
+
+    youtube.src = url + "?autoplay=1";
+}
+
+/* PLAY MP3 */
+
+function playMP3(url, title){
+
+    resetPlayers();
+
+    nowPlaying.innerHTML = "Now Playing: " + title;
+
+    audio.style.display = "block";
+
+    audio.src = url;
+
+    audio.play();
+}
 
 </script>
 
